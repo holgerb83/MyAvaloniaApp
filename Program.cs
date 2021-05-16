@@ -15,6 +15,8 @@ namespace MyAvaloniaApp
             => AppBuilder.Configure<App>()
                 .UseDirect2D1()
                 .UsePlatformDetect()
+                .With(new SkiaOptions { MaxGpuResourceSizeBytes = 8096000 })
+                .With(new Win32PlatformOptions { AllowEglInitialization = true })
                 .LogToTrace();
     }
 }
