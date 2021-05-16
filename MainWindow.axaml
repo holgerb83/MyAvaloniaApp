@@ -21,13 +21,14 @@
                 <MenuItem Header="Cut" />
                 <MenuItem Header="Copy" />
                 <MenuItem Header="Paste" />
+                <Separator />
             </MenuItem>
         </Menu>
         <Grid RowDefinitions="Auto,*">
             <WrapPanel Grid.Row="0">
                 <TextBlock Text="Hello, World" FontSize="24" Margin="5" />
-                <TextBlock Text="{Binding BigNose, StringFormat={}{0:C}}" FontSize="24" Margin="5" />
-                <StackPanel Orientation="Horizontal" Margin="5" >
+                <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" FontSize="24" Margin="5" />
+                <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="What is your name:" Target="Box" FontSize="24" VerticalAlignment="Center" />
                     <TextBox x:Name="Box" Text="{Binding Name}" FontSize="24" Width="100" />
                 </StackPanel>

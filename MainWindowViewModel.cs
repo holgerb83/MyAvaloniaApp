@@ -33,7 +33,7 @@ namespace MyAvaloniaApp
         {
             _counter++;
             Title = $"Wuff, wuff, Cool! {_counter}";
-            BigNose = GetRandom();
+            Price = GetRandom();
         }
 
         private double GetRandom() => _rnd.NextDouble() * 100;
