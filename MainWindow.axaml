@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:myAvaloniaApp="clr-namespace:MyAvaloniaApp"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MyAvaloniaApp.MainWindow"
+        Title="{Binding Title}">
+    <Window.DataContext>
+        <myAvaloniaApp:MainWindowViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Close" Click="MenuItem_OnClick" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <Separator />
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+            </MenuItem>
+        </Menu>
+        <Grid RowDefinitions="Auto,*">
+            <WrapPanel Grid.Row="0">
+                <TextBlock Text="Hello, World" FontSize="24" Margin="5" />
+                <TextBlock Text="{Binding BigNose, StringFormat={}{0:C}}" FontSize="24" Margin="5" />
+                <StackPanel Orientation="Horizontal" Margin="5" >
+                    <Label Content="What is your name:" Target="Box" FontSize="24" VerticalAlignment="Center" />
+                    <TextBox x:Name="Box" Text="{Binding Name}" FontSize="24" Width="100" />
+                </StackPanel>
+                <Button Content="Click me!" Command="{Binding ChangeTitleCommand}" Margin="5" />
+                <Button Content="Fill DataGrid" Command="{Binding FillDataGridCommand}" Margin="5" />
+            </WrapPanel>
+            <DataGrid Grid.Row="1" IsReadOnly="True" Items="{Binding ComplexList}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="A" Binding="{Binding A, StringFormat={}{0:F3}}" />
+                    <DataGridTextColumn Header="B" Binding="{Binding B, StringFormat={}{0:F3}}" />
+                    <DataGridTextColumn Header="C" Binding="{Binding C, StringFormat={}{0:E3}}" />
+                    <DataGridTextColumn Header="D" Binding="{Binding D, StringFormat={}{0:E3}}" />
+                    <DataGridTextColumn Header="E" Binding="{Binding E, StringFormat={}{0:E3}}" />
+                    <DataGridTextColumn Header="F" Binding="{Binding F, StringFormat={}{0:E3}}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Window>
