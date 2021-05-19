@@ -16,11 +16,7 @@
     <Window.DataContext>
         <myAvaloniaApp:MainWindowViewModel />
     </Window.DataContext>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="28" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="28,*">
         <StackPanel Orientation="Horizontal">
             <Menu>
                 <MenuItem Header="File">

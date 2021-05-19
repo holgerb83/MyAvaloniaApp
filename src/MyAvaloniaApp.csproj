@@ -20,12 +20,12 @@
     </AvaloniaXaml>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.4" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.4" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.4" />
-    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.4" />
-    <PackageReference Include="Avalonia.Direct2D1" Version="0.10.4" />
-    <PackageReference Include="MvvmGen" Version="1.0.0" />
+    <PackageReference Include="Avalonia" Version="0.10.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.5" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.5" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.5" />
+    <PackageReference Include="Avalonia.Direct2D1" Version="0.10.5" />
+    <PackageReference Include="MvvmGen" Version="1.1.0" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">
