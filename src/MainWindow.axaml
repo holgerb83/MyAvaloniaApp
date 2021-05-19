@@ -1,0 +1,79 @@
+<Window
+    x:Class="MyAvaloniaApp.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:myAvaloniaApp="clr-namespace:MyAvaloniaApp"
+    x:Name="MainWindow"
+    Title="{Binding Title}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+	<Window.DataContext>
+		<myAvaloniaApp:MainWindowViewModel />
+	</Window.DataContext>
+	<Grid RowDefinitions="28,*">
+		<Menu>
+			<MenuItem Header="File">
+				<MenuItem Click="MenuItem_OnClick" Header="Close" />
+			</MenuItem>
+			<MenuItem Header="Edit">
+				<MenuItem Header="Undo" />
+				<MenuItem Header="Redo" />
+				<Separator />
+				<MenuItem Header="Cut" />
+				<MenuItem Header="Copy" />
+				<MenuItem Header="Paste" />
+				<Separator />
+			</MenuItem>
+		</Menu>
+		<DockPanel Grid.Row="1">
+			<Grid RowDefinitions="Auto,*">
+				<WrapPanel Grid.Row="0">
+					<TextBlock
+                        Margin="5"
+                        FontSize="24"
+                        Text="Hello, World" />
+					<TextBlock
+                        Margin="5"
+                        FontSize="24"
+                        Text="{Binding Price, StringFormat={}{0:C}}" />
+					<StackPanel Margin="5" Orientation="Horizontal">
+						<Label
+                            VerticalAlignment="Center"
+                            Content="What is your name:"
+                            FontSize="24"
+                            Target="Box" />
+						<TextBox
+                            x:Name="Box"
+                            Width="100"
+                            FontSize="24"
+                            Text="{Binding Name}" />
+					</StackPanel>
+					<Button
+                        Margin="5"
+                        Command="{Binding ChangeTitleCommand}"
+                        Content="Click me!" />
+					<Button
+                        Margin="5"
+                        Command="{Binding FillDataGridCommand}"
+                        Content="Fill DataGrid" />
+				</WrapPanel>
+				<DataGrid
+                    Grid.Row="1"
+                    IsReadOnly="True"
+                    Items="{Binding ComplexList}">
+					<DataGrid.Columns>
+						<DataGridTextColumn Binding="{Binding A, StringFormat={}{0:F3}}" Header="A" />
+						<DataGridTextColumn Binding="{Binding B, StringFormat={}{0:F3}}" Header="B" />
+						<DataGridTextColumn Binding="{Binding C, StringFormat={}{0:E3}}" Header="C" />
+						<DataGridTextColumn Binding="{Binding D, StringFormat={}{0:E3}}" Header="D" />
+						<DataGridTextColumn Binding="{Binding E, StringFormat={}{0:E3}}" Header="E" />
+						<DataGridTextColumn Binding="{Binding F, StringFormat={}{0:E3}}" Header="F" />
+					</DataGrid.Columns>
+				</DataGrid>
+			</Grid>
+		</DockPanel>
+	</Grid>
+</Window>

@@ -22,7 +22,7 @@ namespace MyAvaloniaApp
 
         private void MenuItem_OnClick(object? sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
