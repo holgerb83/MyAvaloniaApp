@@ -1,4 +1,15 @@
-﻿namespace MyAvaloniaApp
+﻿using MvvmGen;
+
+namespace MyAvaloniaApp
 {
-    public record ComplexType(double A, double B, double C, double D, double E, double F);
+    [ViewModel]
+    public partial class ComplexType
+    {
+        [Property] private bool _a;
+        [Property] private bool _b;
+        [Property] private bool _c;
+        [Property] private bool _d;
+        [Property] private bool _e;
+        [Property] private bool _f;
+    }
 }

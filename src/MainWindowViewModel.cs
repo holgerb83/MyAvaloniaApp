@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MvvmGen;
 
 namespace MyAvaloniaApp
@@ -14,13 +15,36 @@ namespace MyAvaloniaApp
         [Command]
         private void FillDataGrid()
         {
-            var result = new ComplexType[1_000_000];
-            for (var i = 0; i < result.Length; i++)
+            if (ComplexList.Any())
             {
-                result[i] = new ComplexType(GetRandom(), GetRandom(), GetRandom(), GetRandom(), GetRandom(), GetRandom());
+                foreach (var complexType in ComplexList)
+                {
+                    complexType.A = GetRandom() > 50;
+                    complexType.B = GetRandom() > 50;
+                    complexType.C = GetRandom() > 50;
+                    complexType.D = GetRandom() > 50;
+                    complexType.E = GetRandom() > 50;
+                    complexType.F = GetRandom() > 50;
+                }
             }
+            else
+            {
+                var result = new ComplexType[1_000_000];
+                for (var i = 0; i < result.Length; i++)
+                {
+                    result[i] = new ComplexType
+                    {
+                        A = GetRandom() > 50,
+                        B = GetRandom() > 50,
+                        C = GetRandom() > 50,
+                        D = GetRandom() > 50,
+                        E = GetRandom() > 50,
+                        F = GetRandom() > 50
+                    };
+                }
 
-            ComplexList = result;
+                ComplexList = result;
+            }
         }
 
         partial void OnInitialize()
@@ -34,6 +58,12 @@ namespace MyAvaloniaApp
             _counter++;
             Title = $"Wuff, wuff, Cool! {_counter}";
             Price = GetRandom();
+        }
+
+        [Command]
+        private void ShowMessageBox()
+        {
+
         }
 
         private double GetRandom() => _rnd.NextDouble() * 100;

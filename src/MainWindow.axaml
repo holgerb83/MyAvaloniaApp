@@ -13,7 +13,7 @@
 	<Window.DataContext>
 		<myAvaloniaApp:MainWindowViewModel />
 	</Window.DataContext>
-	<Grid RowDefinitions="28,*">
+	<Grid RowDefinitions="Auto,*">
 		<Menu>
 			<MenuItem Header="File">
 				<MenuItem Click="MenuItem_OnClick" Header="Close" />
@@ -28,52 +28,57 @@
 				<Separator />
 			</MenuItem>
 		</Menu>
-		<DockPanel Grid.Row="1">
-			<Grid RowDefinitions="Auto,*">
-				<WrapPanel Grid.Row="0">
+		<TabControl Grid.Row="1" Padding="0">
+			<TabItem Header="Default">
+				<StackPanel Orientation="Vertical">
 					<TextBlock
-                        Margin="5"
-                        FontSize="24"
-                        Text="Hello, World" />
+						Margin="5"
+						FontSize="24"
+						Text="Hello, World" />
 					<TextBlock
-                        Margin="5"
-                        FontSize="24"
-                        Text="{Binding Price, StringFormat={}{0:C}}" />
+						Margin="5"
+						FontSize="24"
+						Text="{Binding Price, StringFormat={}{0:C}}" />
 					<StackPanel Margin="5" Orientation="Horizontal">
 						<Label
-                            VerticalAlignment="Center"
-                            Content="What is your name:"
-                            FontSize="24"
-                            Target="Box" />
+							VerticalAlignment="Center"
+							Content="What is your name:"
+							FontSize="24"
+							Target="Box" />
 						<TextBox
-                            x:Name="Box"
-                            Width="100"
-                            FontSize="24"
-                            Text="{Binding Name}" />
+							x:Name="Box"
+							Width="100"
+							FontSize="24"
+							Text="{Binding Name}" />
 					</StackPanel>
 					<Button
-                        Margin="5"
-                        Command="{Binding ChangeTitleCommand}"
-                        Content="Click me!" />
-					<Button
-                        Margin="5"
-                        Command="{Binding FillDataGridCommand}"
-                        Content="Fill DataGrid" />
-				</WrapPanel>
-				<DataGrid
-                    Grid.Row="1"
-                    IsReadOnly="True"
+						Margin="5"
+						Command="{Binding ChangeTitleCommand}"
+						Content="Change title!" />
+                    <Button
+						Margin="5"
+						Command="{Binding ShowMessageBoxCommand}"
+						Content="Show message box!" />	
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="Special">
+				<Grid>
+					<DataGrid
                     Items="{Binding ComplexList}">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding A, StringFormat={}{0:F3}}" Header="A" />
-						<DataGridTextColumn Binding="{Binding B, StringFormat={}{0:F3}}" Header="B" />
-						<DataGridTextColumn Binding="{Binding C, StringFormat={}{0:E3}}" Header="C" />
-						<DataGridTextColumn Binding="{Binding D, StringFormat={}{0:E3}}" Header="D" />
-						<DataGridTextColumn Binding="{Binding E, StringFormat={}{0:E3}}" Header="E" />
-						<DataGridTextColumn Binding="{Binding F, StringFormat={}{0:E3}}" Header="F" />
-					</DataGrid.Columns>
-				</DataGrid>
-			</Grid>
-		</DockPanel>
+						<DataGrid.Columns>
+                            <DataGridCheckBoxColumn Binding="{Binding A, Mode=TwoWay}" Header="A" />
+							<DataGridCheckBoxColumn Binding="{Binding B, Mode=TwoWay}" Header="B" />
+							<DataGridCheckBoxColumn Binding="{Binding C, Mode=TwoWay}" Header="C" />
+							<DataGridCheckBoxColumn Binding="{Binding D, Mode=TwoWay}" Header="D" />
+							<DataGridCheckBoxColumn Binding="{Binding E, Mode=TwoWay}" Header="E" />
+							<DataGridCheckBoxColumn Binding="{Binding F, Mode=TwoWay}" Header="F" />
+						</DataGrid.Columns>
+					</DataGrid>
+					<Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,5,0"
+                            Command="{Binding FillDataGridCommand}"
+                            Content="Fill DataGrid" />
+				</Grid>
+			</TabItem>
+		</TabControl>
 	</Grid>
 </Window>
