@@ -1,23 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
     <LangVersion>latest</LangVersion>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Direct2D1" Version="0.10.6" />
+    <PackageReference Include="Avalonia" Version="0.10.8" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.8" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.8" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.8" />
+    <PackageReference Include="Avalonia.Direct2D1" Version="0.10.8" />
     <PackageReference Include="MvvmGen" Version="1.1.1" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" />
+    <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Tracing" Version="4.3.0" />
+    <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.axaml.cs">
       <DependentUpon>App.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Dialog\MessageBoxWindow.axaml.cs">
+      <DependentUpon>MessageBoxWindow.axaml</DependentUpon>
     </Compile>
     <Compile Update="MainWindow.axaml.cs">
       <DependentUpon>MainWindow.axaml</DependentUpon>

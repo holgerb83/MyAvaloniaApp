@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MvvmGen;
+using MyAvaloniaApp.Dialog;
 
 namespace MyAvaloniaApp
 {
@@ -34,12 +35,12 @@ namespace MyAvaloniaApp
                 {
                     result[i] = new ComplexType
                     {
-                        A = GetRandom() > 50,
-                        B = GetRandom() > 50,
-                        C = GetRandom() > 50,
-                        D = GetRandom() > 50,
-                        E = GetRandom() > 50,
-                        F = GetRandom() > 50
+                        A = GetRandomBool(),
+                        B = GetRandomBool(),
+                        C = GetRandomBool(),
+                        D = GetRandomBool(),
+                        E = GetRandomBool(),
+                        F = GetRandomBool()
                     };
                 }
 
@@ -61,11 +62,13 @@ namespace MyAvaloniaApp
         }
 
         [Command]
-        private void ShowMessageBox()
+        private static void ShowMessageBox()
         {
-
+            var dialog = new MessageBoxWindow();
+            dialog.Show();
         }
 
         private double GetRandom() => _rnd.NextDouble() * 100;
+        private bool GetRandomBool() => _rnd.NextDouble() > 0.5;
     }
 }

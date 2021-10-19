@@ -10,75 +10,81 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-	<Window.DataContext>
-		<myAvaloniaApp:MainWindowViewModel />
-	</Window.DataContext>
-	<Grid RowDefinitions="Auto,*">
-		<Menu>
-			<MenuItem Header="File">
-				<MenuItem Click="MenuItem_OnClick" Header="Close" />
-			</MenuItem>
-			<MenuItem Header="Edit">
-				<MenuItem Header="Undo" />
-				<MenuItem Header="Redo" />
-				<Separator />
-				<MenuItem Header="Cut" />
-				<MenuItem Header="Copy" />
-				<MenuItem Header="Paste" />
-				<Separator />
-			</MenuItem>
-		</Menu>
-		<TabControl Grid.Row="1" Padding="0">
-			<TabItem Header="Default">
-				<StackPanel Orientation="Vertical">
-					<TextBlock
-						Margin="5"
-						FontSize="24"
-						Text="Hello, World" />
-					<TextBlock
-						Margin="5"
-						FontSize="24"
-						Text="{Binding Price, StringFormat={}{0:C}}" />
-					<StackPanel Margin="5" Orientation="Horizontal">
-						<Label
-							VerticalAlignment="Center"
-							Content="What is your name:"
-							FontSize="24"
-							Target="Box" />
-						<TextBox
-							x:Name="Box"
-							Width="100"
-							FontSize="24"
-							Text="{Binding Name}" />
-					</StackPanel>
-					<Button
-						Margin="5"
-						Command="{Binding ChangeTitleCommand}"
-						Content="Change title!" />
+    <Window.DataContext>
+        <myAvaloniaApp:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid RowDefinitions="Auto,*">
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Click="MenuItem_OnClick" Header="Close" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <Separator />
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+                <Separator />
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1" Padding="0">
+            <TabItem Header="Default">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Margin="5"
+                        FontSize="24"
+                        Text="Hello, World" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="24"
+                        Text="{Binding Price, StringFormat={}{0:C}}" />
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <Label
+                            VerticalAlignment="Center"
+                            Content="What is your name:"
+                            FontSize="24"
+                            Target="Box" />
+                        <TextBox
+                            x:Name="Box"
+                            Width="100"
+                            FontSize="24"
+                            Text="{Binding Name}" />
+                    </StackPanel>
                     <Button
-						Margin="5"
-						Command="{Binding ShowMessageBoxCommand}"
-						Content="Show message box!" />	
-				</StackPanel>
-			</TabItem>
-			<TabItem Header="Special">
-				<Grid>
-					<DataGrid
-                    Items="{Binding ComplexList}">
-						<DataGrid.Columns>
+                        Margin="5"
+                        Command="{Binding ChangeTitleCommand}"
+                        Content="Change title!" />
+                    <Button
+                        Margin="5"
+                        Command="{Binding ShowMessageBoxCommand}"
+                        Content="Show message box!" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Special">
+                <Grid>
+                    <DataGrid Items="{Binding ComplexList}">
+                        <DataGrid.Columns>
                             <DataGridCheckBoxColumn Binding="{Binding A, Mode=TwoWay}" Header="A" />
-							<DataGridCheckBoxColumn Binding="{Binding B, Mode=TwoWay}" Header="B" />
-							<DataGridCheckBoxColumn Binding="{Binding C, Mode=TwoWay}" Header="C" />
-							<DataGridCheckBoxColumn Binding="{Binding D, Mode=TwoWay}" Header="D" />
-							<DataGridCheckBoxColumn Binding="{Binding E, Mode=TwoWay}" Header="E" />
-							<DataGridCheckBoxColumn Binding="{Binding F, Mode=TwoWay}" Header="F" />
-						</DataGrid.Columns>
-					</DataGrid>
-					<Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,5,0"
+                            <DataGridCheckBoxColumn Binding="{Binding B, Mode=TwoWay}" Header="B" />
+                            <DataGridCheckBoxColumn Binding="{Binding C, Mode=TwoWay}" Header="C" />
+                            <DataGridCheckBoxColumn Binding="{Binding D, Mode=TwoWay}" Header="D" />
+                            <DataGridCheckBoxColumn Binding="{Binding E, Mode=TwoWay}" Header="E" />
+                            <DataGridCheckBoxColumn Binding="{Binding F, Mode=TwoWay}" Header="F" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,5,0"
                             Command="{Binding FillDataGridCommand}"
                             Content="Fill DataGrid" />
-				</Grid>
-			</TabItem>
-		</TabControl>
-	</Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Logs">
+                <DataGrid Items="{Binding Logs}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding }" Header="Entry"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
